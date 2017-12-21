@@ -12,18 +12,18 @@
 		85869A711FEAFE9C00513796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A6F1FEAFE9C00513796 /* Main.storyboard */; };
 		85869A731FEAFE9C00513796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85869A721FEAFE9C00513796 /* Assets.xcassets */; };
 		85869A761FEAFE9C00513796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A741FEAFE9C00513796 /* LaunchScreen.storyboard */; };
-		85869A901FEB0C1B00513796 /* KotlinHello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A8F1FEB0C1B00513796 /* KotlinHello.framework */; };
-		85869A911FEB0C1B00513796 /* KotlinHello.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A8F1FEB0C1B00513796 /* KotlinHello.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85869A971FEB21FC00513796 /* KotlinHello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A961FEB21FB00513796 /* KotlinHello.framework */; };
+		85869A981FEB21FC00513796 /* KotlinHello.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A961FEB21FB00513796 /* KotlinHello.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		85869A921FEB0C1B00513796 /* Embed Frameworks */ = {
+		85869A991FEB21FC00513796 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				85869A911FEB0C1B00513796 /* KotlinHello.framework in Embed Frameworks */,
+				85869A981FEB21FC00513796 /* KotlinHello.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +40,7 @@
 		85869A771FEAFE9C00513796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85869A7E1FEB02CD00513796 /* KotlinHello.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KotlinHello.framework; path = ../shared/build/konan/bin/iphone_sim/KotlinHello.framework; sourceTree = "<group>"; };
 		85869A8F1FEB0C1B00513796 /* KotlinHello.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KotlinHello.framework; sourceTree = "<group>"; };
+		85869A961FEB21FB00513796 /* KotlinHello.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KotlinHello.framework; path = ../shared/build/konan/bin/iphone_sim/KotlinHello.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85869A901FEB0C1B00513796 /* KotlinHello.framework in Frameworks */,
+				85869A971FEB21FC00513796 /* KotlinHello.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				85869A8F1FEB0C1B00513796 /* KotlinHello.framework */,
+				85869A961FEB21FB00513796 /* KotlinHello.framework */,
 				85869A6A1FEAFE9C00513796 /* Hello Shared Kotlin */,
 				85869A691FEAFE9C00513796 /* Products */,
 				85869A7D1FEB02CD00513796 /* Frameworks */,
@@ -104,7 +106,7 @@
 				85869A931FEB0E7E00513796 /* ShellScript */,
 				85869A651FEAFE9C00513796 /* Frameworks */,
 				85869A661FEAFE9C00513796 /* Resources */,
-				85869A921FEB0C1B00513796 /* Embed Frameworks */,
+				85869A991FEB21FC00513796 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
