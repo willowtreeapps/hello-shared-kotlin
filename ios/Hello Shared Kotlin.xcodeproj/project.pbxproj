@@ -100,8 +100,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85869A7A1FEAFE9C00513796 /* Build configuration list for PBXNativeTarget "Hello Shared Kotlin" */;
 			buildPhases = (
-				85869A641FEAFE9C00513796 /* Sources */,
 				85869A931FEB0E7E00513796 /* ShellScript */,
+				85869A641FEAFE9C00513796 /* Sources */,
 				85869A651FEAFE9C00513796 /* Frameworks */,
 				85869A661FEAFE9C00513796 /* Resources */,
 				85869A921FEB0C1B00513796 /* Embed Frameworks */,
@@ -175,7 +175,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd .. && ./gradlew copyFramework";
+			shellScript = "cd .. && ./gradlew shared:copyFramework";
 		};
 /* End PBXShellScriptBuildPhase section */
 
