@@ -30,6 +30,36 @@
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="todos" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4L-a5-cqr">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoTableViewCell" id="pVM-XN-jCx" customClass="TodoTableViewCell" customModule="Hello_Shared_Kotlin" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pVM-XN-jCx" id="oiw-jD-Bhv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="todoText" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt8-Ra-2t0">
+                                                                            <rect key="frame" x="70" y="0.0" width="290" height="37"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" restorationIdentifier="checked" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VD-RE-GDn">
+                                                                            <rect key="frame" x="15" y="6" width="49" height="31"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <connections>
+                                                                                <action selector="doneChanged:" destination="pVM-XN-jCx" eventType="valueChanged" id="q0y-SB-AJV"/>
+                                                                            </connections>
+                                                                        </switch>
+                                                                    </subviews>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="done" destination="6VD-RE-GDn" id="N0y-UR-SLN"/>
+                                                                    <outlet property="todoText" destination="dt8-Ra-2t0" id="yBr-n4-GBG"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                        </prototypes>
                                                     </tableView>
                                                 </subviews>
                                             </stackView>
@@ -40,6 +70,9 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="add" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0g-bl-TAU">
                                 <rect key="frame" x="320" y="617" width="32" height="30"/>
                                 <state key="normal" title="ADD"/>
+                                <connections>
+                                    <action selector="add:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="VZD-BR-dwX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,6 +85,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="add" destination="o0g-bl-TAU" id="ARw-Ng-VVZ"/>
+                        <outlet property="todos" destination="n4L-a5-cqr" id="yff-dr-mbV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

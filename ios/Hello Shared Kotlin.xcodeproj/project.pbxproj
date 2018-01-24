@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8519CAD01FFD9131001DB5AF /* KotlinHello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A9B1FEDA9CD00513796 /* KotlinHello.framework */; };
+		8519CAD2200FCC94001DB5AF /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */; };
 		85869A6C1FEAFE9C00513796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6B1FEAFE9C00513796 /* AppDelegate.swift */; };
 		85869A6E1FEAFE9C00513796 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6D1FEAFE9C00513796 /* ViewController.swift */; };
 		85869A711FEAFE9C00513796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A6F1FEAFE9C00513796 /* Main.storyboard */; };
@@ -30,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		85869A681FEAFE9C00513796 /* Hello Shared Kotlin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello Shared Kotlin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85869A6B1FEAFE9C00513796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85869A6D1FEAFE9C00513796 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8519CAD01FFD9131001DB5AF /* KotlinHello.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,7 @@
 				85869A721FEAFE9C00513796 /* Assets.xcassets */,
 				85869A741FEAFE9C00513796 /* LaunchScreen.storyboard */,
 				85869A771FEAFE9C00513796 /* Info.plist */,
+				8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */,
 			);
 			path = "Hello Shared Kotlin";
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8519CAD2200FCC94001DB5AF /* TodoTableViewCell.swift in Sources */,
 				85869A6E1FEAFE9C00513796 /* ViewController.swift in Sources */,
 				85869A6C1FEAFE9C00513796 /* AppDelegate.swift in Sources */,
 			);

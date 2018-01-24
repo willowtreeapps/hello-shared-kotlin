@@ -10,13 +10,21 @@ import UIKit
 import KotlinHello
 
 class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
-    @IBOutlet var todos: UITableView?
-    @IBOutlet var add: UIButton?
+    @IBOutlet var todos: UITableView!
+    @IBOutlet var add: UIButton!
+    
+    @IBAction func add(_ sender: Any) {
+        appStore.dispatch(action: KotlinHelloActionAdd(text: "new todo"))
+    }
+    
+    var dataSource: TodosDataSource!
     
     let appStore = KotlinHello.APP_STORE()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataSource = TodosDataSource(store: appStore)
+        todos.dataSource = dataSource
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,7 +40,8 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     }
     
     func invokeStore(state: KotlinHelloAppState) {
-        todos?.dataSource = TodosDataSource(todos: state.todos as! Array<KotlinHelloTodo>)
+        dataSource.set(state: state)
+        todos.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,21 +51,28 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
 }
 
 class TodosDataSource : NSObject, UITableViewDataSource {
-    let todos: Array<KotlinHelloTodo>
-    init(todos: Array<KotlinHelloTodo>) {
-        self.todos = todos
+    let store: KotlinHelloAppStore
+    var state: KotlinHelloAppState
+    
+    init(store: KotlinHelloAppStore) {
+        self.store = store
+        self.state = store.state
+    }
+    
+    func set(state: KotlinHelloAppState) {
+        self.state = state
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let lablel = UILabel()
-        lablel.text = todos[indexPath.row].text
-        cell.addSubview(lablel)
+        let cellIdentifier = "TodoTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoTableViewCell
+        cell.bind(store: store, state: state,index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
+        return state.todos.count
     }
 }
+
 
