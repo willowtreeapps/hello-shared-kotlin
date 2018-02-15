@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,21 +39,27 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="todoText" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt8-Ra-2t0">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="todoText" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt8-Ra-2t0">
                                                                             <rect key="frame" x="70" y="0.0" width="290" height="37"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" restorationIdentifier="checked" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VD-RE-GDn">
+                                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" restorationIdentifier="checked" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VD-RE-GDn">
                                                                             <rect key="frame" x="15" y="6" width="49" height="31"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <connections>
                                                                                 <action selector="doneChanged:" destination="pVM-XN-jCx" eventType="valueChanged" id="q0y-SB-AJV"/>
                                                                             </connections>
                                                                         </switch>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="6VD-RE-GDn" firstAttribute="leading" secondItem="oiw-jD-Bhv" secondAttribute="leadingMargin" constant="-1" id="Ojb-9b-Hnh"/>
+                                                                        <constraint firstItem="dt8-Ra-2t0" firstAttribute="top" secondItem="oiw-jD-Bhv" secondAttribute="top" id="bVN-u0-l6K"/>
+                                                                        <constraint firstItem="6VD-RE-GDn" firstAttribute="bottom" secondItem="dt8-Ra-2t0" secondAttribute="bottom" id="f2T-I7-tVh"/>
+                                                                        <constraint firstItem="6VD-RE-GDn" firstAttribute="centerY" secondItem="oiw-jD-Bhv" secondAttribute="centerY" id="rvq-ll-AQY"/>
+                                                                        <constraint firstAttribute="trailingMargin" secondItem="dt8-Ra-2t0" secondAttribute="trailing" constant="-1" id="sTY-cI-Hzy"/>
+                                                                        <constraint firstItem="dt8-Ra-2t0" firstAttribute="leading" secondItem="6VD-RE-GDn" secondAttribute="trailing" constant="6" id="t6z-t7-Kth"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="done" destination="6VD-RE-GDn" id="N0y-UR-SLN"/>
@@ -67,7 +74,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="add" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0g-bl-TAU">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="add" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0g-bl-TAU">
                                 <rect key="frame" x="320" y="617" width="32" height="30"/>
                                 <state key="normal" title="ADD"/>
                                 <connections>
@@ -79,6 +86,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Le9-34-T9L" secondAttribute="trailing" id="9dP-m4-jfK"/>
                             <constraint firstAttribute="bottom" secondItem="Le9-34-T9L" secondAttribute="bottom" constant="58" id="A9k-HB-9yG"/>
+                            <constraint firstItem="o0g-bl-TAU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="320" id="QAs-2f-dct"/>
                             <constraint firstItem="Le9-34-T9L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RMk-F2-nO6"/>
                             <constraint firstItem="Le9-34-T9L" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="frI-8I-ZIx"/>
                             <constraint firstItem="o0g-bl-TAU" firstAttribute="top" secondItem="Le9-34-T9L" secondAttribute="bottom" constant="8" symbolic="YES" id="rJG-hD-OFC"/>

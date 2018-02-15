@@ -19,7 +19,7 @@ class TodoTableViewCell : UITableViewCell {
     func bind(store: KotlinHelloAppStore, state: KotlinHelloAppState, index: Int) {
         self.store = store
         self.index = index
-        let todo = state.todos[index] as! KotlinHelloTodo
+        let todo = state.todos[index]
         todoText.text = todo.text
         done.isOn = todo.done
     }
