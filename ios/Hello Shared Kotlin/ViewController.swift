@@ -25,6 +25,7 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
         super.viewDidLoad()
         dataSource = TodosDataSource(store: appStore)
         todos.dataSource = dataSource
+        todos.delegate = dataSource
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +74,23 @@ class TodosDataSource : NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return state.todos.count + 1
+    }
+}
+
+extension TodosDataSource: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        guard indexPath.section > 0 else {
+            return nil
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { [unowned self] (_, indexPath) in
+                self.store.dispatch(action: KotlinHelloActionRemove(index: Int32(indexPath.row)))
+            }
+        
+        deleteAction.backgroundColor = UIColor.red
+        return [deleteAction]
     }
 }
 
