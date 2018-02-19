@@ -72,7 +72,7 @@ class TodosDataSource : NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return state.todos.count
+        return state.todos.count + 1
     }
 }
 
