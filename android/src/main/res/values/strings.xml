@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Android</string>
+    <string name="app_name">Kotlin ToDo</string>
     <string name="my_todo">My Todo</string>
 </resources>

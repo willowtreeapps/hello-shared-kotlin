@@ -21,7 +21,10 @@ class DbMiddleware(val db: Database, val store: AppStore) : Middleware<Action, A
     }
 }
 
-data class AppState(val todos: List<Todo> = emptyList())
+data class AppState(val todos: List<Todo> = emptyList()) {
+    val undoneTodoCount
+        get() = todos.filter { !it.done }.count()
+}
 
 data class Todo(val id: Int = -1, val text: String = "", val done: Boolean = false)
 

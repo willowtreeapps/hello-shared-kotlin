@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
@@ -18,15 +19,19 @@ val appStore = AppStore(AppDatabase())
 class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
 
     private lateinit var adapter: Adapter
+    private lateinit var undoneTodoCount: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
         val list = findViewById<RecyclerView>(R.id.list)
         adapter = Adapter()
         list.adapter = adapter
         ItemTouchHelper(adapter.itemTouchCallback).attachToRecyclerView(list)
+        undoneTodoCount = findViewById(R.id.undone_todo_count)
     }
 
     override fun onStart() {
@@ -41,6 +46,7 @@ class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
 
     override fun invoke(state: AppState) {
         adapter.items = state.todos
+        undoneTodoCount.text = state.undoneTodoCount.toString()
     }
 
     private class Adapter : RecyclerView.Adapter<Adapter.Holder>() {
