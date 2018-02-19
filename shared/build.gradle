@@ -36,7 +36,7 @@ task copyFramework(type: Copy, dependsOn: lipo) {
     from("$buildDir/konan/bin/iphone") {
         include '*/Headers/*'
         include '*/Modules/*'
-        include 'Info.plist'
+        include '*/Info.plist'
     }
     from "$buildDir/konan/bin/iphone_universal"
     into "${rootProject.rootDir}/ios"

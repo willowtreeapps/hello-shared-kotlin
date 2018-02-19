@@ -1,0 +1,6 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'Hello Shared Kotlin' do
+  pod 'Firebase/Database', '~> 4.1.4'
+end
