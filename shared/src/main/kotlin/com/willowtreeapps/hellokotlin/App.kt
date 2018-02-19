@@ -1,8 +1,6 @@
 package com.willowtreeapps.hellokotlin
 
-var ID = 0
-
-class AppStore(db: Database) : SimpleStore<AppState>(AppState(listOf(Todo(text = "Sample Todo")))) {
+class AppStore(db: Database) : SimpleStore<AppState>(AppState()) {
     private val dispatcher = Dispatcher.forStore(this, ::reduce)
             .chain(DbMiddleware(db, this))
 
@@ -27,11 +25,12 @@ data class AppState(val todos: List<Todo> = emptyList()) {
     fun toMap(): Map<String, Any> = mapOf("todos" to todos.map { it.toMap() })
 
     companion object {
-        fun fromMap(map: Map<String, Any>) = AppState((map["todos"] as List<Map<String, Any>>).map { Todo.fromMap(it) })
+        fun fromMap(map: Map<String, Any>) = AppState((map["todos"] as List<Map<String, Any>?>)
+                .filterNotNull().map { Todo.fromMap(it) })
     }
 }
 
-data class Todo(val id: Int = ID++, val text: String = "", val done: Boolean = false) {
+data class Todo(val id: Int = -1, val text: String = "", val done: Boolean = false) {
     fun toMap(): Map<String, Any> = mapOf("id" to id, "text" to text, "done" to done)
 
     companion object {
@@ -51,7 +50,9 @@ fun reduce(action: Action, state: AppState) = when (action) {
     is Action.Check -> check(action, state)
 }
 
-fun add(action: Action.Add, state: AppState) = state.copy(todos = state.todos + Todo(text = action.text))
+fun add(action: Action.Add, state: AppState) = state.copy(todos = state.todos + Todo(id = newId(state.todos), text = action.text))
+
+private fun newId(todos: List<Todo>): Int = (todos.map(Todo::id).max() ?: -1) + 1
 
 fun remove(action: Action.Remove, state: AppState) = state.copy(todos = state.todos.removeAt(action.index))
 
