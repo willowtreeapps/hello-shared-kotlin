@@ -1,7 +1,7 @@
 package com.willowtreeapps.hellokotlin
 
 interface Database{
-    fun put(todos: AppState)
+    fun put(data: Map<String, Any>)
 
-    fun observe(onChange: (AppState) -> Unit)
+    fun observe(onChange: (Map<String, Any>) -> Unit)
 }
