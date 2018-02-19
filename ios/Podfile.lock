@@ -29,7 +29,7 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - Firebase/Database
+  - Firebase/Database (~> 4.9.0)
 
 SPEC CHECKSUMS:
   Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
@@ -41,6 +41,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 1ffa9b71b0f0fd2af91e12e958e21fac58b531b8
+PODFILE CHECKSUM: bed767bdc54af72ef957b90652e0361d3e95696d
 
 COCOAPODS: 1.4.0
