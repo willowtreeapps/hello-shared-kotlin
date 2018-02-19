@@ -10,33 +10,20 @@ class AppStore(db: Database) : SimpleStore<AppState>(AppState()) {
 class DbMiddleware(val db: Database, val store: AppStore) : Middleware<Action, Action> {
     init {
         db.observe { state ->
-            store.state = AppState.fromMap(state)
+            store.state = state
         }
     }
 
     override fun dispatch(action: Action, next: (action: Action) -> Action): Action {
         val result = next(action)
-        db.put(store.state.toMap())
+        db.put(store.state)
         return result
     }
 }
 
-data class AppState(val todos: List<Todo> = emptyList()) {
-    fun toMap(): Map<String, Any> = mapOf("todos" to todos.map { it.toMap() })
+data class AppState(val todos: List<Todo> = emptyList())
 
-    companion object {
-        fun fromMap(map: Map<String, Any>) = AppState((map["todos"] as List<Map<String, Any>?>)
-                .filterNotNull().map { Todo.fromMap(it) })
-    }
-}
-
-data class Todo(val id: Int = -1, val text: String = "", val done: Boolean = false) {
-    fun toMap(): Map<String, Any> = mapOf("id" to id, "text" to text, "done" to done)
-
-    companion object {
-        fun fromMap(map: Map<String, Any>) = Todo((map["id"] as Long).toInt(), map["text"] as String, map["done"] as Boolean)
-    }
-}
+data class Todo(val id: Int = -1, val text: String = "", val done: Boolean = false)
 
 sealed class Action {
     data class Add(val text: String) : Action()

@@ -11,18 +11,18 @@ import com.willowtreeapps.hellokotlin.Database
 class AppDatabase : Database {
     private val ref = FirebaseDatabase.getInstance().reference
 
-    override fun put(data: Map<String, Any>) {
-        ref.setValue(data).addOnCompleteListener {
+    override fun put(state: AppState) {
+        ref.setValue(state).addOnCompleteListener {
             if (!it.isSuccessful) {
                 Log.e("AppDatabase", it.exception?.message, it.exception)
             }
         }
     }
 
-    override fun observe(onChange: (Map<String, Any>) -> Unit) {
-        ref.addValueEventListener(object: ValueEventListener {
+    override fun observe(onChange: (AppState) -> Unit) {
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val state = snapshot.value as Map<String, Any>
+                val state = snapshot.getValue(AppState::class.java) ?: return
                 onChange(state)
             }
 
