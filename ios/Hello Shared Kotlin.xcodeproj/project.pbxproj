@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8519CAD01FFD9131001DB5AF /* KotlinHello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A9B1FEDA9CD00513796 /* KotlinHello.framework */; };
 		8519CAD2200FCC94001DB5AF /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */; };
+		8543766D203B36CF004CB092 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8543766C203B36CF004CB092 /* AppDatabase.swift */; };
+		8543766F203B423A004CB092 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8543766E203B423A004CB092 /* GoogleService-Info.plist */; };
 		85869A6C1FEAFE9C00513796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6B1FEAFE9C00513796 /* AppDelegate.swift */; };
 		85869A6E1FEAFE9C00513796 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6D1FEAFE9C00513796 /* ViewController.swift */; };
 		85869A711FEAFE9C00513796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A6F1FEAFE9C00513796 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		19081D06E65636913475AE7A /* Pods-Hello Shared Kotlin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hello Shared Kotlin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hello Shared Kotlin/Pods-Hello Shared Kotlin.release.xcconfig"; sourceTree = "<group>"; };
 		51A69123A3C14278D65C478D /* Pods_Hello_Shared_Kotlin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hello_Shared_Kotlin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		8543766C203B36CF004CB092 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		8543766E203B423A004CB092 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85869A681FEAFE9C00513796 /* Hello Shared Kotlin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello Shared Kotlin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85869A6B1FEAFE9C00513796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85869A6D1FEAFE9C00513796 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		85869A6A1FEAFE9C00513796 /* Hello Shared Kotlin */ = {
 			isa = PBXGroup;
 			children = (
+				8543766E203B423A004CB092 /* GoogleService-Info.plist */,
 				85869A6B1FEAFE9C00513796 /* AppDelegate.swift */,
 				85869A6D1FEAFE9C00513796 /* ViewController.swift */,
 				85869A6F1FEAFE9C00513796 /* Main.storyboard */,
@@ -98,6 +103,7 @@
 				85869A741FEAFE9C00513796 /* LaunchScreen.storyboard */,
 				85869A771FEAFE9C00513796 /* Info.plist */,
 				8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */,
+				8543766C203B36CF004CB092 /* AppDatabase.swift */,
 			);
 			path = "Hello Shared Kotlin";
 			sourceTree = "<group>";
@@ -176,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85869A761FEAFE9C00513796 /* LaunchScreen.storyboard in Resources */,
+				8543766F203B423A004CB092 /* GoogleService-Info.plist in Resources */,
 				85869A731FEAFE9C00513796 /* Assets.xcassets in Resources */,
 				85869A711FEAFE9C00513796 /* Main.storyboard in Resources */,
 			);
@@ -261,6 +268,7 @@
 			files = (
 				8519CAD2200FCC94001DB5AF /* TodoTableViewCell.swift in Sources */,
 				85869A6E1FEAFE9C00513796 /* ViewController.swift in Sources */,
+				8543766D203B36CF004CB092 /* AppDatabase.swift in Sources */,
 				85869A6C1FEAFE9C00513796 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

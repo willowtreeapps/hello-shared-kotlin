@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import com.willowtreeapps.hellokotlin.*
 
-val appStore = APP_STORE
+val appStore = AppStore(AppDatabase())
 
 class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
 

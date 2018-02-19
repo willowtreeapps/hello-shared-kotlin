@@ -1,15 +1,31 @@
 package com.willowtreeapps.hellokotlin
 
-val APP_STORE = AppStore()
 var ID = 0
 
-class AppStore: SimpleStore<AppState>(AppState(listOf(Todo(text = "Sample Todo")))) {
-    fun dispatch(action: Action) = Dispatcher.forStore(this, ::reduce).dispatch(action)
+class AppStore(db: Database): SimpleStore<AppState>(AppState(listOf(Todo(text = "Sample Todo")))) {
+    private val dispatcher = Dispatcher.forStore(this, ::reduce)
+            .chain(DbMiddleware(db, this))
+
+    fun dispatch(action: Action) = dispatcher.dispatch(action)
 }
 
-data class AppState(val todos: List<Todo>)
+class DbMiddleware(val db: Database, val store: AppStore): Middleware<Action, Action> {
+    init {
+        db.observe { state ->
+            store.state = state
+        }
+    }
 
-data class Todo(val id: Int = ID++, val text: String, val done: Boolean = false)
+    override fun dispatch(action: Action, next: (action: Action) -> Action): Action {
+        val result = next(action)
+        db.put(store.state)
+        return result
+    }
+}
+
+data class AppState(val todos: List<Todo> = emptyList())
+
+data class Todo(val id: Int = ID++, val text: String = "", val done: Boolean = false)
 
 sealed class Action {
     data class Add(val text: String): Action()

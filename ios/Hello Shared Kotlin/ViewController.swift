@@ -18,11 +18,11 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     }
     
     var dataSource: TodosDataSource!
-    
-    let appStore = KotlinHello.APP_STORE()
+    var appStore: KotlinHelloAppStore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appStore = KotlinHelloAppStore(db: AppDatabase())
         dataSource = TodosDataSource(store: appStore)
         todos.dataSource = dataSource
     }
