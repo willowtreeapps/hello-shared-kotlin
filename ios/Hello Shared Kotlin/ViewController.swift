@@ -28,6 +28,7 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         appStore.addListener(listener: self)
     }
     
