@@ -81,15 +81,11 @@ extension TodosDataSource: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        guard indexPath.section > 0 else {
-            return nil
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") {
+            [unowned self] (_, indexPath) in
+                self.store.dispatch(action: KotlinHelloActionRemove(index: Int32(indexPath.row)))
         }
         
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { [unowned self] (_, indexPath) in
-                self.store.dispatch(action: KotlinHelloActionRemove(index: Int32(indexPath.row)))
-            }
-        
-        deleteAction.backgroundColor = UIColor.red
         return [deleteAction]
     }
 }
