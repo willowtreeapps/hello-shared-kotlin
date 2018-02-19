@@ -12,6 +12,7 @@ import KotlinHello
 class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     @IBOutlet var todos: UITableView!
     @IBOutlet var add: UIButton!
+    @IBOutlet weak var countLabel: UILabel!
     
     @IBAction func add(_ sender: Any) {
         appStore.dispatch(action: KotlinHelloActionAdd(text: "new todo"))
@@ -43,6 +44,7 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     
     func invokeStore(state: KotlinHelloAppState) {
         dataSource.set(state: state)
+        countLabel.text = "\(state.undoneTodoCount)"
         todos.reloadData()
     }
 

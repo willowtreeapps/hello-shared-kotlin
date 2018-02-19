@@ -116,6 +116,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="oAq-Fg-o2L" id="5mO-jx-6te"/>
                         <outlet property="todos" destination="n4L-a5-cqr" id="yff-dr-mbV"/>
                     </connections>
                 </viewController>
