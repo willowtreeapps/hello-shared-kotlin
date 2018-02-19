@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
                 result.dispatchUpdatesTo(this)
             }
 
-        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(
+                ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
             override fun getSwipeDirs(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
                 val holder = viewHolder as Holder
@@ -81,7 +83,10 @@ class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
                 appStore.dispatch(Action.Remove(viewHolder.adapterPosition))
             }
 
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder?): Boolean {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                val holder = target as Holder
+                if (holder.todo.id == -1) return false
+                appStore.dispatch(Action.Move(viewHolder.adapterPosition, target.adapterPosition))
                 return true
             }
         }
@@ -109,21 +114,33 @@ class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
                 }
                 text.setOnFocusChangeListener { v, hasFocus ->
                     if (!hasFocus) {
-                        addNew()
+                        update()
                     }
                 }
                 text.setOnEditorActionListener { v, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        addNew()
+                        update()
                     }
                     true
                 }
             }
 
-            private fun addNew() {
-                if (todo.text.isEmpty() && text.text.isNotEmpty()) {
-                    appStore.dispatch(Action.Add(text.text.toString()))
-                    text.text = null
+            private fun update() {
+                val position = adapterPosition
+                if (position == RecyclerView.NO_POSITION) {
+                    return
+                }
+                if (todo.id == -1) {
+                    if (text.text.isNotEmpty()) {
+                        appStore.dispatch(Action.Add(text.text.toString()))
+                        text.text = null
+                    }
+                } else {
+                    if (text.text.isEmpty()) {
+                        appStore.dispatch(Action.Remove(position))
+                    } else {
+                        appStore.dispatch(Action.Edit(position, text.text.toString()))
+                    }
                 }
             }
 

@@ -41,13 +41,17 @@ data class Todo(val id: Int = -1, val text: String = "", val done: Boolean = fal
 sealed class Action {
     data class Add(val text: String) : Action()
     data class Remove(val index: Int) : Action()
+    data class Move(val oldIndex: Int, val newIndex: Int) : Action()
     data class Check(val index: Int) : Action()
+    data class Edit(val index: Int, val text: String) : Action()
 }
 
 fun reduce(action: Action, state: AppState) = when (action) {
     is Action.Add -> add(action, state)
     is Action.Remove -> remove(action, state)
     is Action.Check -> check(action, state)
+    is Action.Move -> move(action, state)
+    is Action.Edit -> edit(action, state)
 }
 
 fun add(action: Action.Add, state: AppState) = state.copy(todos = state.todos + Todo(id = newId(state.todos), text = action.text))
@@ -56,7 +60,16 @@ private fun newId(todos: List<Todo>): Int = (todos.map(Todo::id).max() ?: -1) + 
 
 fun remove(action: Action.Remove, state: AppState) = state.copy(todos = state.todos.removeAt(action.index))
 
+fun move(action: Action.Move, state: AppState) = state.copy(todos = state.todos.move(action.oldIndex, action.newIndex))
+
 fun check(action: Action.Check, state: AppState) = state.copy(todos = state.todos.replace(action.index) { it.copy(done = !it.done) })
+
+fun edit(action: Action.Edit, state: AppState) = state.copy(todos = state.todos.replace(action.index) { it.copy(text = action.text) })
+
+private fun <T> Collection<T>.move(oldIndex: Int, newIndex: Int): List<T> = toMutableList().apply {
+    val value = removeAt(oldIndex)
+    add(newIndex, value)
+}
 
 private fun <T> Collection<T>.replace(index: Int, f: (T) -> T): List<T> = toMutableList().apply {
     val value = this[index]
