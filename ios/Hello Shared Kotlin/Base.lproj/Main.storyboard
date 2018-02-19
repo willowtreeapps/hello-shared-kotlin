@@ -25,16 +25,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4v-zo-3gY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kotlin ToDo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qS-Jv-398">
-                                        <rect key="frame" x="15" y="30" width="127" height="33"/>
+                                        <rect key="frame" x="15" y="50" width="127" height="33"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAq-Fg-o2L">
-                                        <rect key="frame" x="330.5" y="30" width="29.5" height="33"/>
+                                        <rect key="frame" x="330.5" y="50" width="29.5" height="33"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,13 +44,12 @@
                                 <constraints>
                                     <constraint firstItem="oAq-Fg-o2L" firstAttribute="baseline" secondItem="5qS-Jv-398" secondAttribute="baseline" id="Gya-QS-qJO"/>
                                     <constraint firstAttribute="bottom" secondItem="5qS-Jv-398" secondAttribute="bottom" constant="15" id="Hzy-hu-obk"/>
-                                    <constraint firstItem="5qS-Jv-398" firstAttribute="top" secondItem="m4v-zo-3gY" secondAttribute="top" constant="30" id="RQi-Rx-c8V"/>
                                     <constraint firstItem="5qS-Jv-398" firstAttribute="leading" secondItem="m4v-zo-3gY" secondAttribute="leading" constant="15" id="qZX-dz-M02"/>
                                     <constraint firstAttribute="trailing" secondItem="oAq-Fg-o2L" secondAttribute="trailing" constant="15" id="xC5-jN-fI8"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="todos" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4L-a5-cqr">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TodoTableViewCell" id="pVM-XN-jCx" customClass="TodoTableViewCell" customModule="Hello_Shared_Kotlin" customModuleProvider="target">
@@ -66,8 +65,8 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="91u-Ig-Zgy">
-                                                    <rect key="frame" x="15" y="4" width="36" height="36"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="91u-Ig-Zgy">
+                                                    <rect key="frame" x="11" y="4" width="36" height="36"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-M8-NC9">
                                                     <rect key="frame" x="0.0" y="-1" width="44" height="44"/>
@@ -87,7 +86,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="byn-RU-m1F" secondAttribute="bottom" constant="15" id="3Bx-Z8-pmC"/>
                                                 <constraint firstItem="byn-RU-m1F" firstAttribute="top" secondItem="oiw-jD-Bhv" secondAttribute="top" constant="15" id="ICb-ZY-oNX"/>
                                                 <constraint firstItem="rmq-M8-NC9" firstAttribute="leading" secondItem="oiw-jD-Bhv" secondAttribute="leading" id="WMe-52-bg8"/>
-                                                <constraint firstItem="91u-Ig-Zgy" firstAttribute="leading" secondItem="oiw-jD-Bhv" secondAttribute="leading" constant="15" id="a2S-QM-dvD"/>
+                                                <constraint firstItem="91u-Ig-Zgy" firstAttribute="leading" secondItem="oiw-jD-Bhv" secondAttribute="leading" constant="11" id="a2S-QM-dvD"/>
                                                 <constraint firstItem="91u-Ig-Zgy" firstAttribute="centerY" secondItem="oiw-jD-Bhv" secondAttribute="centerY" id="dUj-rV-SyM"/>
                                                 <constraint firstItem="rmq-M8-NC9" firstAttribute="centerY" secondItem="oiw-jD-Bhv" secondAttribute="centerY" id="jnh-W5-ccW"/>
                                                 <constraint firstItem="byn-RU-m1F" firstAttribute="leading" secondItem="rmq-M8-NC9" secondAttribute="trailing" constant="10" id="okr-TY-gjv"/>
@@ -111,6 +110,7 @@
                             <constraint firstItem="n4L-a5-cqr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QI6-x8-eIi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n4L-a5-cqr" secondAttribute="bottom" id="cMR-8y-FUw"/>
                             <constraint firstItem="m4v-zo-3gY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cep-vh-Bl8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="5qS-Jv-398" secondAttribute="top" constant="-30" id="gGO-Q5-FJe"/>
                             <constraint firstItem="n4L-a5-cqr" firstAttribute="top" secondItem="m4v-zo-3gY" secondAttribute="bottom" id="pZk-08-6Y1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
