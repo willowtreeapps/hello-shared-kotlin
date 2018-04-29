@@ -21,8 +21,8 @@ konanArtifacts {
 
 task lipo(type: Exec, dependsOn: 'build') {
     def frameworks = files(
-            "$buildDir/konan/bin/iphone/${frameworkName}.framework/$frameworkName",
-            "$buildDir/konan/bin/iphone_sim/${frameworkName}.framework/$frameworkName"
+            "$buildDir/konan/bin/ios_arm64/${frameworkName}.framework/$frameworkName",
+            "$buildDir/konan/bin/ios_x64/${frameworkName}.framework/$frameworkName"
     )
     def output = file("$buildDir/konan/bin/iphone_universal/${frameworkName}.framework/$frameworkName")
     inputs.files frameworks
