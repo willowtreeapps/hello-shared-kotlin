@@ -36,7 +36,10 @@ export class Socket {
    */
   connect(username: string): void {
     this.username = username;
-    // this.deviceId = deviceId;
+  }
+
+  leave(): void {
+    this.username = "";
   }
 
   // Emit handlers
@@ -120,6 +123,15 @@ export class Socket {
    */
   public onJoinGame(handler: (username: string) => void): void {
     this.socket.on(IncomingEvents.join, handler);
+  }
+
+    /**
+   * Called when a users sends an action to a match
+   *
+   * @param handler    The function used to process their request
+   */
+  public onLeaveGame(handler: (username: string) => void): void {
+    this.socket.on(IncomingEvents.leave, handler);
   }
 
   /**

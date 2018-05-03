@@ -13,6 +13,7 @@ const socketManager_1 = require("./model/socketManager");
 const socket_1 = require("./model/socket");
 const match_1 = require("./model/match");
 const matchManager_1 = require("./model/matchManager");
+const player_1 = require("./model/player");
 process.on("uncaughtException", (error) => {
     log_1.log.error("Uncaught Exception", error, error.stack);
     process.exit(1);
@@ -29,17 +30,19 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     // SEND ACTION
     // ----------------------------------
     socket.onSendSelection((selection) => {
-        if (socket.username === undefined) {
+        if (socket.username === undefined || socket.username === "") {
+            log_1.log.verbose(event_1.IncomingEvents.selection, "user attempted to set selection before joining");
             socket.sendError("Must join game before setting selection");
             return;
         }
         log_1.log.verbose(event_1.IncomingEvents.selection, socket.username + " selected " + selection);
         matchManager_1.matchManager.match = new match_1.Match(selection);
-        matchManager_1.matchManager.match.players.push(socket.username);
+        matchManager_1.matchManager.match.players.push(new player_1.Player(socket.username));
         socket.sendSelectionSet();
     });
     socket.onSendGuess((guess) => {
-        if (socket.username === undefined) {
+        if (socket.username === undefined || socket.username === "") {
+            log_1.log.verbose(event_1.IncomingEvents.guess, "user attempted to guess before joining");
             socket.sendError("Must join game before guessing");
             return;
         }
@@ -60,11 +63,21 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
         }
     });
     socket.onJoinGame((username) => {
-        log_1.log.verbose(event_1.IncomingEvents.join, socket.username + " joined game");
+        log_1.log.verbose(event_1.IncomingEvents.join, username + " joined game");
         socket.connect(username);
         if (matchManager_1.matchManager.match !== undefined) {
-            socket.sendUsers(matchManager_1.matchManager.match.players);
+            log_1.log.verbose(event_1.IncomingEvents.join, "sending users out");
+            var playernames = matchManager_1.matchManager.match.players.map(obj => obj.name);
+            socket.sendUsers(playernames);
         }
+    });
+    socket.onLeaveGame((username) => {
+        log_1.log.verbose(event_1.IncomingEvents.leave, username + " leaving game");
+        socket.leave();
+        if (matchManager_1.matchManager.match === undefined) {
+            return;
+        }
+        matchManager_1.matchManager.match.players = matchManager_1.matchManager.match.players.filter(obj => obj.name !== username);
     });
     // ----------------------------------
     // RECONNECT

@@ -12,6 +12,7 @@ import { socketManager } from "./model/socketManager";
 import { Socket } from "./model/socket";
 import { Match } from "./model/match";
 import { matchManager} from "./model/matchManager";
+import { Player} from "./model/player";
 
 
 (process as NodeJS.EventEmitter).on("uncaughtException", (error) => {
@@ -33,19 +34,21 @@ socketManager.io.on(IncomingEvents.connection, (s: any) => {
   // SEND ACTION
   // ----------------------------------
   socket.onSendSelection((selection: string) => {
-    if (socket.username === undefined) {
+    if (socket.username === undefined || socket.username === "") {
+      log.verbose(IncomingEvents.selection, "user attempted to set selection before joining");
       socket.sendError("Must join game before setting selection");
       return;
     }
 
     log.verbose(IncomingEvents.selection, socket.username + " selected " + selection);
     matchManager.match = new Match(selection);
-    matchManager.match.players.push(socket.username);
+    matchManager.match.players.push(new Player(socket.username));
     socket.sendSelectionSet();
   });
 
   socket.onSendGuess((guess: string) => {
-    if (socket.username === undefined) {
+    if (socket.username === undefined || socket.username === "") {
+      log.verbose(IncomingEvents.guess, "user attempted to guess before joining");
       socket.sendError("Must join game before guessing");
       return;
     }
@@ -66,11 +69,23 @@ socketManager.io.on(IncomingEvents.connection, (s: any) => {
   });
 
   socket.onJoinGame((username: string) => {
-    log.verbose(IncomingEvents.join, socket.username + " joined game" );
+    log.verbose(IncomingEvents.join, username + " joined game" );
     socket.connect(username);
     if (matchManager.match !== undefined) {
-      socket.sendUsers(matchManager.match.players);
+      log.verbose(IncomingEvents.join, "sending users out");
+      var playernames = matchManager.match.players.map(obj => obj.name);
+      socket.sendUsers(playernames);
     }
+  });
+
+  socket.onLeaveGame((username: string) => {
+    log.verbose(IncomingEvents.leave, username + " leaving game" )
+    socket.leave();
+    if (matchManager.match === undefined) {
+      return;
+    }
+
+    matchManager.match.players = matchManager.match.players.filter(obj => obj.name !== username);
   });
 
   // ----------------------------------

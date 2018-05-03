@@ -14,6 +14,7 @@ var IncomingEvents;
     IncomingEvents["join"] = "join";
     IncomingEvents["selection"] = "selection";
     IncomingEvents["guess"] = "guess";
+    IncomingEvents["leave"] = "leave";
     IncomingEvents["connection"] = "connection";
     IncomingEvents["reconnected"] = "reconnected";
     IncomingEvents["disconnect"] = "disconnect";

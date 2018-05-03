@@ -30,7 +30,9 @@ class Socket {
      */
     connect(username) {
         this.username = username;
-        // this.deviceId = deviceId;
+    }
+    leave() {
+        this.username = "";
     }
     // Emit handlers
     /**
@@ -102,6 +104,14 @@ class Socket {
      */
     onJoinGame(handler) {
         this.socket.on(event_1.IncomingEvents.join, handler);
+    }
+    /**
+   * Called when a users sends an action to a match
+   *
+   * @param handler    The function used to process their request
+   */
+    onLeaveGame(handler) {
+        this.socket.on(event_1.IncomingEvents.leave, handler);
     }
     /**
      * Called when a user reconnects to a match

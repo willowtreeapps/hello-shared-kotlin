@@ -12,6 +12,7 @@ export enum IncomingEvents {
   join = "join",
   selection = "selection",
   guess = "guess",
+  leave = "leave",
   connection = "connection",
   reconnected = "reconnected",
   disconnect = "disconnect"
