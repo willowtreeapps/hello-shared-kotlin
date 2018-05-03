@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "570356934496",
+    "firebase_url": "https://builditday.firebaseio.com",
+    "project_id": "builditday",
+    "storage_bucket": "builditday.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570356934496:android:4b7ec0d493ab8bad",
+        "android_client_info": {
+          "package_name": "com.example.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570356934496-ekqr8qk5gec4bnc2u42m119meiqiroo0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApxLuvA_537Sxv2S_Qq7dMUB8csDKeRWU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

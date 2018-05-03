@@ -10,7 +10,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.willowtreeapps.sharedkotlintodo"
+        applicationId "com.example.android"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
