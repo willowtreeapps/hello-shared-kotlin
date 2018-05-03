@@ -1,0 +1,26 @@
+{
+    "authors": "Boris Yankov <https://github.com/borisyankov/>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [],
+    "moduleDependencies": [],
+    "libraryMajorVersion": "4",
+    "libraryMinorVersion": "0",
+    "libraryName": "Handlebars v4.0.5",
+    "typingsPackageName": "handlebars",
+    "projectName": "http://handlebarsjs.com/",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "Mixed",
+    "globals": [
+        "Handlebars",
+        "hbs"
+    ],
+    "declaredModules": [
+        "handlebars"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "a34b62e3ce232bf15faa1c9e923b4504dc20c23bf74e4836c6a92c89ddf6e0ea"
+}

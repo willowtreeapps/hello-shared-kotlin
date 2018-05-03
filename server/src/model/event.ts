@@ -8,11 +8,16 @@
 /**
  * Events received by the socket client
  */
-export enum Event {
+export enum IncomingEvents {
+  joinGame = "joinGame",
   sendSelection = "sendSelection",
   sendGuess = "sendGuess",
-  guessResponse = "guessResponse",
   connection = "connection",
   reconnected = "reconnected",
   disconnect = "disconnect"
+}
+
+export enum OutGoingEvents {
+  guessResponse = "guessResponse",
+  error = "error"
 }
