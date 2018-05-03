@@ -7,7 +7,6 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const event_1 = require("./event");
-const event_2 = require("./event");
 const log_1 = require("../log");
 // Catch unhandled errors
 process.on("uncaughtException", (error) => {
@@ -18,6 +17,7 @@ class Socket {
     constructor(socket) {
         this.numUsers = 0;
         this.socket = socket;
+        this.socket.join("test");
     }
     // Computed properties for socket.io
     get username() { return this.socket.username; }
@@ -33,47 +33,6 @@ class Socket {
     }
     leave() {
         this.username = "";
-    }
-    // Emit handlers
-    /**
-     * Send a client error message back to the client
-     *
-     * @param message    The error message to pass on
-     */
-    sendError(message) {
-        this.socket.emit(event_2.OutGoingEvents.error, { message });
-    }
-    /**
-     * Send a client error message back to the client
-     *
-     * @param message    The error message to pass on
-     */
-    sendResponse(message) {
-        this.socket.emit(event_2.OutGoingEvents.response, { message });
-    }
-    /**
-     * Send a client error message back to the client
-     *
-     * @param message    The error message to pass on
-     */
-    sendUsers(users) {
-        this.socket.emit(event_2.OutGoingEvents.users, { users });
-    }
-    /**
-       * Send a client error message back to the client
-       *
-       * @param message    The error message to pass on
-       */
-    sendSelectionSet() {
-        this.socket.emit(event_2.OutGoingEvents.selectionSet, {});
-    }
-    /**
-     * Send a client error message back to the client
-     *
-     * @param message    The error message to pass on
-     */
-    sendGuessSet(userId) {
-        this.socket.emit(event_2.OutGoingEvents.guessSet, { userId });
     }
     /**
      * Emit that a user disconnected from a match

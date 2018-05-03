@@ -6,6 +6,7 @@
  */
 
 import { log } from "../log";
+import { OutGoingEvents } from "./event";
 // import { Player } from "./player";
 
 import express = require("express");
@@ -34,6 +35,54 @@ class SocketManager {
     // Routing
     this.app.use(express.static(path.join(__dirname, "public")));
   }
+
+  // Emit handlers
+
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendError(message: string): void {
+    this.io.to("test").emit(OutGoingEvents.error, { message });
+  }
+
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendResponse(message: string): void {
+    this.io.to("test").emit(OutGoingEvents.response, { message });
+  }
+
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendUsers(users: string[]): void {
+    this.io.to("test").emit(OutGoingEvents.users, { users });
+  }
+
+/**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendSelectionSet(username: string): void {
+    this.io.to("test").emit(OutGoingEvents.selectionSet, { username });
+  }
+
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendGuessSet(username: string): void {
+    this.io.to("test").emit(OutGoingEvents.guessSet, { username });
+  }
+
 
   // Helpers
 

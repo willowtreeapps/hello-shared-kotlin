@@ -32,24 +32,24 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     socket.onSendSelection((selection) => {
         if (socket.username === undefined || socket.username === "") {
             log_1.log.verbose(event_1.IncomingEvents.selection, "user attempted to set selection before joining");
-            socket.sendError("Must join game before setting selection");
+            socketManager_1.socketManager.sendError("Must join game before setting selection");
             return;
         }
         log_1.log.verbose(event_1.IncomingEvents.selection, socket.username + " selected " + selection);
         matchManager_1.matchManager.match.selected = selection;
-        socket.sendSelectionSet();
+        socketManager_1.socketManager.sendSelectionSet(socket.username);
     });
     socket.onSendGuess((guess) => {
         if (socket.username === undefined || socket.username === "") {
             log_1.log.verbose(event_1.IncomingEvents.guess, "user attempted to guess before joining");
-            socket.sendError("Must join game before guessing");
+            socketManager_1.socketManager.sendError("Must join game before guessing");
             return;
         }
         log_1.log.verbose(event_1.IncomingEvents.guess, socket.username + " guessed " + guess);
-        socket.sendGuessSet(socket.username);
+        socketManager_1.socketManager.sendGuessSet(socket.username);
         if (matchManager_1.matchManager.match === undefined) {
             log_1.log.verbose(event_1.IncomingEvents.guess, "must select word first!");
-            socket.sendError("Can't guess yet, nothing has been selected!");
+            socketManager_1.socketManager.sendError("Can't guess yet, nothing has been selected!");
             return;
         }
         const player = matchManager_1.matchManager.match.players.find(player => player.name === socket.username);
@@ -63,14 +63,16 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
             log_1.log.verbose(event_1.IncomingEvents.guess, "Not everyone has guessed yet.");
             return;
         }
-        log_1.log.verbose(event_1.IncomingEvents.guess, "Everyone has guessed yet!");
+        log_1.log.verbose(event_1.IncomingEvents.guess, "Everyone has guessed!");
         const correctPlayers = matchManager_1.matchManager.match.players.filter(player => player.guess === matchManager_1.matchManager.match.selected);
         if (correctPlayers === undefined || correctPlayers.length === 0) {
-            socket.sendResponse("No one guessed correctly! Correct answer was " + matchManager_1.matchManager.match.selected);
+            log_1.log.verbose(event_1.IncomingEvents.guess, "No winner");
+            socketManager_1.socketManager.sendResponse("No one guessed correctly! Correct answer was " + matchManager_1.matchManager.match.selected);
             return;
         }
         const playerNames = correctPlayers.map(player => player.name);
-        socket.sendResponse("These players guessed " + matchManager_1.matchManager.match.selected + " correctly: " + playerNames);
+        log_1.log.verbose(event_1.IncomingEvents.guess, "winners: " + playerNames);
+        socketManager_1.socketManager.sendResponse("These players guessed " + matchManager_1.matchManager.match.selected + " correctly: " + playerNames);
     });
     socket.onJoinGame((username) => {
         log_1.log.verbose(event_1.IncomingEvents.join, username + " joined game");
@@ -81,7 +83,7 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
         matchManager_1.matchManager.match.players.push(new player_1.Player(username));
         var playernames = matchManager_1.matchManager.match.players.map(obj => obj.name);
         log_1.log.verbose(event_1.IncomingEvents.join, "sending users out: " + playernames);
-        socket.sendUsers(playernames);
+        socketManager_1.socketManager.sendUsers(playernames);
     });
     socket.onLeaveGame((username) => {
         log_1.log.verbose(event_1.IncomingEvents.leave, socket.username + " leaving game");

@@ -7,6 +7,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const log_1 = require("../log");
+const event_1 = require("./event");
 // import { Player } from "./player";
 const express = require("express");
 const path = require("path");
@@ -29,6 +30,47 @@ class SocketManager {
         });
         // Routing
         this.app.use(express.static(path.join(__dirname, "public")));
+    }
+    // Emit handlers
+    /**
+     * Send a client error message back to the client
+     *
+     * @param message    The error message to pass on
+     */
+    sendError(message) {
+        this.io.to("test").emit(event_1.OutGoingEvents.error, { message });
+    }
+    /**
+     * Send a client error message back to the client
+     *
+     * @param message    The error message to pass on
+     */
+    sendResponse(message) {
+        this.io.to("test").emit(event_1.OutGoingEvents.response, { message });
+    }
+    /**
+     * Send a client error message back to the client
+     *
+     * @param message    The error message to pass on
+     */
+    sendUsers(users) {
+        this.io.to("test").emit(event_1.OutGoingEvents.users, { users });
+    }
+    /**
+       * Send a client error message back to the client
+       *
+       * @param message    The error message to pass on
+       */
+    sendSelectionSet(username) {
+        this.io.to("test").emit(event_1.OutGoingEvents.selectionSet, { username });
+    }
+    /**
+     * Send a client error message back to the client
+     *
+     * @param message    The error message to pass on
+     */
+    sendGuessSet(username) {
+        this.io.to("test").emit(event_1.OutGoingEvents.guessSet, { username });
     }
 }
 /**

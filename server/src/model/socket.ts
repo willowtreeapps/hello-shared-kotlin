@@ -6,7 +6,6 @@
  */
 
 import { IncomingEvents } from "./event";
-import { OutGoingEvents } from "./event";
 import { log } from "../log";
 
 // Catch unhandled errors
@@ -21,6 +20,7 @@ export class Socket {
 
   constructor(socket: any) {
     this.socket = socket;
+    this.socket.join("test");
   }
 
   // Computed properties for socket.io
@@ -40,53 +40,6 @@ export class Socket {
 
   leave(): void {
     this.username = "";
-  }
-
-  // Emit handlers
-
-  /**
-   * Send a client error message back to the client
-   *
-   * @param message    The error message to pass on
-   */
-  public sendError(message: string): void {
-    this.socket.emit(OutGoingEvents.error, { message });
-  }
-
-  /**
-   * Send a client error message back to the client
-   *
-   * @param message    The error message to pass on
-   */
-  public sendResponse(message: string): void {
-    this.socket.emit(OutGoingEvents.response, { message });
-  }
-
-  /**
-   * Send a client error message back to the client
-   *
-   * @param message    The error message to pass on
-   */
-  public sendUsers(users: string[]): void {
-    this.socket.emit(OutGoingEvents.users, { users });
-  }
-
-/**
-   * Send a client error message back to the client
-   *
-   * @param message    The error message to pass on
-   */
-  public sendSelectionSet(): void {
-    this.socket.emit(OutGoingEvents.selectionSet, { });
-  }
-
-  /**
-   * Send a client error message back to the client
-   *
-   * @param message    The error message to pass on
-   */
-  public sendGuessSet(userId: string): void {
-    this.socket.emit(OutGoingEvents.guessSet, { userId });
   }
 
   /**
