@@ -5,8 +5,8 @@ build
 local.properties
 ios/KotlinHello.framework
 ios/KotlinHello.kt.bc
-google-services.json
-GoogleService-Info.plist
+# google-services.json
+# GoogleService-Info.plist
 
 .DS_Store
 
