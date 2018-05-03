@@ -14,11 +14,11 @@ export class Match {
   players: Player[];
 
   get everyoneGuessed(): boolean { 
-    return this.players.filter(obj => obj.guess).length === this.players.length
+    const guesses = this.players.filter(obj => obj.guess !== undefined)
+    return guesses.length === (this.players.length - 1) // subtract one for the selector
   }
 
-  constructor(selected: string) {
-    this.selected = selected;
+  constructor() {
     this.players = [];
   }
 }

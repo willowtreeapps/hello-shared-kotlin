@@ -5,10 +5,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 class Match {
     get everyoneGuessed() {
-        return this.players.filter(obj => obj.guess).length === this.players.length;
+        const guesses = this.players.filter(obj => obj.guess !== undefined);
+        return guesses.length === (this.players.length - 1); // subtract one for the selector
     }
-    constructor(selected) {
-        this.selected = selected;
+    constructor() {
         this.players = [];
     }
 }
