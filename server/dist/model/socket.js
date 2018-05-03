@@ -51,6 +51,22 @@ class Socket {
         this.socket.emit(event_2.OutGoingEvents.response, { message });
     }
     /**
+       * Send a client error message back to the client
+       *
+       * @param message    The error message to pass on
+       */
+    sendSelectionSet() {
+        this.socket.emit(event_2.OutGoingEvents.selectionSet, {});
+    }
+    /**
+     * Send a client error message back to the client
+     *
+     * @param message    The error message to pass on
+     */
+    sendGuessSet(userId) {
+        this.socket.emit(event_2.OutGoingEvents.guessSet, { userId });
+    }
+    /**
      * Emit that a user disconnected from a match
      */
     emitDisconnected() {

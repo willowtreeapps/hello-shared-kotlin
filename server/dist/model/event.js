@@ -21,5 +21,7 @@ var IncomingEvents;
 var OutGoingEvents;
 (function (OutGoingEvents) {
     OutGoingEvents["response"] = "response";
+    OutGoingEvents["selectionSet"] = "selectionSet";
+    OutGoingEvents["guessSet"] = "guessSet";
     OutGoingEvents["error"] = "error";
 })(OutGoingEvents = exports.OutGoingEvents || (exports.OutGoingEvents = {}));

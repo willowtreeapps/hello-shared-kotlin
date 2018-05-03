@@ -1,10 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+import { Match } from "./match";
 // import { Player } from "./player";
 // import { log } from "../log";
+
 /**
  * Keeps track of all matches currently being played
  */
 class MatchManager {
+	match: Match;
 }
-exports.matchManager = new MatchManager();
+
+export const matchManager = new MatchManager();

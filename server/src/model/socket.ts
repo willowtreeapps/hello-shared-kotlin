@@ -27,7 +27,6 @@ export class Socket {
 
   get username(): string { return this.socket.username; }
   set username(newValue: string) { this.socket.username = newValue; }
-  get userId(): string { return this.socket.username; }
   get id(): string { return this.socket.id; }
 
   /**
@@ -58,6 +57,24 @@ export class Socket {
    */
   public sendResponse(message: string): void {
     this.socket.emit(OutGoingEvents.response, { message });
+  }
+
+/**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendSelectionSet(): void {
+    this.socket.emit(OutGoingEvents.selectionSet, { });
+  }
+
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendGuessSet(userId: string): void {
+    this.socket.emit(OutGoingEvents.guessSet, { userId });
   }
 
   /**

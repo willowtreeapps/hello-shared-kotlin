@@ -19,5 +19,7 @@ export enum IncomingEvents {
 
 export enum OutGoingEvents {
   response = "response",
+  selectionSet = "selectionSet",
+  guessSet = "guessSet",
   error = "error"
 }
