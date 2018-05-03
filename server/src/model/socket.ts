@@ -27,9 +27,7 @@ export class Socket {
 
   get username(): string { return this.socket.username; }
   set username(newValue: string) { this.socket.username = newValue; }
-
-  get userId(): string { return this.socket.username + ":" + this.socket.deviceId; }
-
+  get userId(): string { return this.socket.username; }
   get id(): string { return this.socket.id; }
 
   /**
@@ -59,7 +57,7 @@ export class Socket {
    * @param message    The error message to pass on
    */
   public sendResponse(message: string): void {
-    this.socket.emit(OutGoingEvents.guessResponse, { message });
+    this.socket.emit(OutGoingEvents.response, { message });
   }
 
   /**
@@ -76,8 +74,8 @@ export class Socket {
    *
    * @param handler    The function used to process their request
    */
-  public onSendSelection(handler: (data: any) => void): void {
-    this.socket.on(IncomingEvents.sendSelection, handler);
+  public onSendSelection(handler: (selection: string) => void): void {
+    this.socket.on(IncomingEvents.selection, handler);
   }
 
   /**
@@ -85,8 +83,8 @@ export class Socket {
    *
    * @param handler    The function used to process their request
    */
-  public onSendGuess(handler: (data: any) => void): void {
-    this.socket.on(IncomingEvents.sendGuess, handler);
+  public onSendGuess(handler: (guess: string) => void): void {
+    this.socket.on(IncomingEvents.guess, handler);
   }
 
   /**
@@ -94,8 +92,8 @@ export class Socket {
    *
    * @param handler    The function used to process their request
    */
-  public onJoinGame(handler: (data: any) => void): void {
-    this.socket.on(IncomingEvents.joinGame, handler);
+  public onJoinGame(handler: (username: string) => void): void {
+    this.socket.on(IncomingEvents.join, handler);
   }
 
   /**

@@ -31,19 +31,17 @@ socketManager.io.on(IncomingEvents.connection, (s: any) => {
   // ----------------------------------
   // SEND ACTION
   // ----------------------------------
-  socket.onSendSelection((data: any) => {
-    data;
-    log.verbose(IncomingEvents.sendSelection, socket.userId + " sent an action to match ");
+  socket.onSendSelection((selection: string) => {
+    log.verbose(IncomingEvents.selection, socket.userId + " selected " + selection);
   });
 
-  socket.onSendGuess((data: any) => {
-    data;
-    log.verbose(IncomingEvents.sendGuess, socket.userId + " sent an action to match ");
+  socket.onSendGuess((guess: string) => {
+    log.verbose(IncomingEvents.guess, socket.userId + " guessed " + guess);
   });
 
-  socket.onJoinGame((data: any) => {
-    data;
-    log.verbose(IncomingEvents.joinGame, socket.userId + "joined game" );
+  socket.onJoinGame((username: string) => {
+    socket.connect(username);
+    log.verbose(IncomingEvents.join, socket.userId + " joined game" );
   });
 
   // ----------------------------------

@@ -9,15 +9,15 @@
  * Events received by the socket client
  */
 export enum IncomingEvents {
-  joinGame = "joinGame",
-  sendSelection = "sendSelection",
-  sendGuess = "sendGuess",
+  join = "join",
+  selection = "selection",
+  guess = "guess",
   connection = "connection",
   reconnected = "reconnected",
   disconnect = "disconnect"
 }
 
 export enum OutGoingEvents {
-  guessResponse = "guessResponse",
+  response = "response",
   error = "error"
 }

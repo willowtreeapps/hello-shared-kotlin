@@ -27,8 +27,6 @@ class SocketManager {
   port = process.env.PORT || 3000;
 
   constructor() {
-    this.io.set("heartbeat timeout", 10000);
-    this.io.set("heartbeat interval", 2000);
     this.server.listen(this.port, () => {
       log.info("App", "Server listening at port " + this.port);
     });

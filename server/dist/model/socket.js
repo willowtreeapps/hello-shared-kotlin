@@ -22,7 +22,7 @@ class Socket {
     // Computed properties for socket.io
     get username() { return this.socket.username; }
     set username(newValue) { this.socket.username = newValue; }
-    get userId() { return this.socket.username + ":" + this.socket.deviceId; }
+    get userId() { return this.socket.username; }
     get id() { return this.socket.id; }
     /**
      * Connect a socket to a match, adding a bunch of meta-data
@@ -48,7 +48,7 @@ class Socket {
      * @param message    The error message to pass on
      */
     sendResponse(message) {
-        this.socket.emit(event_2.OutGoingEvents.guessResponse, { message });
+        this.socket.emit(event_2.OutGoingEvents.response, { message });
     }
     /**
      * Emit that a user disconnected from a match
@@ -62,7 +62,7 @@ class Socket {
      * @param handler    The function used to process their request
      */
     onSendSelection(handler) {
-        this.socket.on(event_1.IncomingEvents.sendSelection, handler);
+        this.socket.on(event_1.IncomingEvents.selection, handler);
     }
     /**
      * Called when a users sends an action to a match
@@ -70,7 +70,7 @@ class Socket {
      * @param handler    The function used to process their request
      */
     onSendGuess(handler) {
-        this.socket.on(event_1.IncomingEvents.sendGuess, handler);
+        this.socket.on(event_1.IncomingEvents.guess, handler);
     }
     /**
      * Called when a users sends an action to a match
@@ -78,7 +78,7 @@ class Socket {
      * @param handler    The function used to process their request
      */
     onJoinGame(handler) {
-        this.socket.on(event_1.IncomingEvents.joinGame, handler);
+        this.socket.on(event_1.IncomingEvents.join, handler);
     }
     /**
      * Called when a user reconnects to a match

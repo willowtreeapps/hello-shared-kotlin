@@ -26,17 +26,15 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     // ----------------------------------
     // SEND ACTION
     // ----------------------------------
-    socket.onSendSelection((data) => {
-        data;
-        log_1.log.verbose(event_1.IncomingEvents.sendSelection, socket.userId + " sent an action to match ");
+    socket.onSendSelection((selection) => {
+        log_1.log.verbose(event_1.IncomingEvents.selection, socket.userId + " selected " + selection);
     });
-    socket.onSendGuess((data) => {
-        data;
-        log_1.log.verbose(event_1.IncomingEvents.sendGuess, socket.userId + " sent an action to match ");
+    socket.onSendGuess((guess) => {
+        log_1.log.verbose(event_1.IncomingEvents.guess, socket.userId + " guessed " + guess);
     });
-    socket.onJoinGame((data) => {
-        data;
-        log_1.log.verbose(event_1.IncomingEvents.joinGame, socket.userId + "joined game");
+    socket.onJoinGame((username) => {
+        socket.connect(username);
+        log_1.log.verbose(event_1.IncomingEvents.join, socket.userId + " joined game");
     });
     // ----------------------------------
     // RECONNECT

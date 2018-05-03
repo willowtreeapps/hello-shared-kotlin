@@ -23,8 +23,6 @@ class SocketManager {
         this.server = require("http").createServer(this.app);
         this.io = require("socket.io")(this.server);
         this.port = process.env.PORT || 3000;
-        this.io.set("heartbeat timeout", 10000);
-        this.io.set("heartbeat interval", 2000);
         this.server.listen(this.port, () => {
             log_1.log.info("App", "Server listening at port " + this.port);
         });

@@ -11,15 +11,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var IncomingEvents;
 (function (IncomingEvents) {
-    IncomingEvents["joinGame"] = "joinGame";
-    IncomingEvents["sendSelection"] = "sendSelection";
-    IncomingEvents["sendGuess"] = "sendGuess";
+    IncomingEvents["join"] = "join";
+    IncomingEvents["selection"] = "selection";
+    IncomingEvents["guess"] = "guess";
     IncomingEvents["connection"] = "connection";
     IncomingEvents["reconnected"] = "reconnected";
     IncomingEvents["disconnect"] = "disconnect";
 })(IncomingEvents = exports.IncomingEvents || (exports.IncomingEvents = {}));
 var OutGoingEvents;
 (function (OutGoingEvents) {
-    OutGoingEvents["guessResponse"] = "guessResponse";
+    OutGoingEvents["response"] = "response";
     OutGoingEvents["error"] = "error";
 })(OutGoingEvents = exports.OutGoingEvents || (exports.OutGoingEvents = {}));
