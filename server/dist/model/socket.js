@@ -22,7 +22,6 @@ class Socket {
     // Computed properties for socket.io
     get username() { return this.socket.username; }
     set username(newValue) { this.socket.username = newValue; }
-    get userId() { return this.socket.username; }
     get id() { return this.socket.id; }
     /**
      * Connect a socket to a match, adding a bunch of meta-data

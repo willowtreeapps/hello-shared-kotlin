@@ -21,5 +21,5 @@ export enum OutGoingEvents {
   response = "response",
   selectionSet = "selectionSet",
   guessSet = "guessSet",
-  error = "error"
+  error = "errorSent" // gotta use a name that isn't just error
 }

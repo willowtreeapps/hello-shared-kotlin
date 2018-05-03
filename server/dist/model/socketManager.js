@@ -7,6 +7,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const log_1 = require("../log");
+// import { Player } from "./player";
 const express = require("express");
 const path = require("path");
 // Catch unhandled errors
@@ -28,27 +29,6 @@ class SocketManager {
         });
         // Routing
         this.app.use(express.static(path.join(__dirname, "public")));
-    }
-    // Emitters
-    /**
-     * Emit the current connected users for a match to the room
-     *
-     * @param matchName    The name of the room to send the message to
-     * @param players      The players in the match
-     */
-    emitUsersForMatch(matchName, players) {
-        this.io.to(matchName).emit("usersForMatch", { players });
-    }
-    // Helpers
-    /**
-     * Get a reference to a socket connection by its id
-     *
-     * @param id    The id of the socket to search for
-     *
-     * @returns The socket if it exists, or undefined
-     */
-    getSocketById(id) {
-        return this.io.sockets.connected[id];
     }
 }
 /**

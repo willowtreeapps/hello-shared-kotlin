@@ -29,14 +29,14 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     // SEND ACTION
     // ----------------------------------
     socket.onSendSelection((selection) => {
-        log_1.log.verbose(event_1.IncomingEvents.selection, socket.userId + " selected " + selection);
+        log_1.log.verbose(event_1.IncomingEvents.selection, socket.username + " selected " + selection);
         matchManager_1.matchManager.match = new match_1.Match(selection);
-        matchManager_1.matchManager.match.players.push(socket.userId);
+        matchManager_1.matchManager.match.players.push(socket.username);
         socket.sendSelectionSet();
     });
     socket.onSendGuess((guess) => {
-        log_1.log.verbose(event_1.IncomingEvents.guess, socket.userId + " guessed " + guess);
-        socket.sendGuessSet(socket.userId);
+        log_1.log.verbose(event_1.IncomingEvents.guess, socket.username + " guessed " + guess);
+        socket.sendGuessSet(socket.username);
         if (matchManager_1.matchManager.match === undefined) {
             log_1.log.verbose(event_1.IncomingEvents.guess, "must select word first!");
             socket.sendError("Can't guess yet, nothing has been selected!");
@@ -48,19 +48,19 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
             else {
                 socket.sendResponse(guess + " is wrong!");
             }
-            log_1.log.verbose(event_1.IncomingEvents.guess, socket.userId + " guessed correctly: " + (matchManager_1.matchManager.match.selected === guess));
+            log_1.log.verbose(event_1.IncomingEvents.guess, socket.username + " guessed correctly: " + (matchManager_1.matchManager.match.selected === guess));
         }
     });
     socket.onJoinGame((username) => {
         socket.connect(username);
-        log_1.log.verbose(event_1.IncomingEvents.join, socket.userId + " joined game");
+        log_1.log.verbose(event_1.IncomingEvents.join, socket.username + " joined game");
     });
     // ----------------------------------
     // RECONNECT
     // ----------------------------------
     socket.onReconnected((deviceId, matchName) => {
         deviceId == deviceId;
-        log_1.log.reconnected(matchName, socket.userId);
+        log_1.log.reconnected(matchName, socket.username);
     });
     // ----------------------------------
     // DISCONNECT
@@ -68,8 +68,6 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     socket.onDisconnect((reason) => {
         log_1.log.info(event_1.IncomingEvents.disconnect, "Number of connected users: " + --socket.numUsers);
         reason;
-        // log.disconnected(socket.userId, reason);
-        // log.verbose(IncomingEvents.disconnect, "Ignored disconnect for player " + socket.userId + ", could not find match " + socket.matchName);
         return;
     });
 });

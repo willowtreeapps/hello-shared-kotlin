@@ -23,5 +23,5 @@ var OutGoingEvents;
     OutGoingEvents["response"] = "response";
     OutGoingEvents["selectionSet"] = "selectionSet";
     OutGoingEvents["guessSet"] = "guessSet";
-    OutGoingEvents["error"] = "error";
+    OutGoingEvents["error"] = "errorSent";
 })(OutGoingEvents = exports.OutGoingEvents || (exports.OutGoingEvents = {}));

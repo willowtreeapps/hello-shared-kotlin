@@ -6,7 +6,7 @@
  */
 
 import { log } from "../log";
-import { Player } from "./player";
+// import { Player } from "./player";
 
 import express = require("express");
 import path = require("path");
@@ -35,30 +35,18 @@ class SocketManager {
     this.app.use(express.static(path.join(__dirname, "public")));
   }
 
-  // Emitters
-
-  /**
-   * Emit the current connected users for a match to the room
-   *
-   * @param matchName    The name of the room to send the message to
-   * @param players      The players in the match
-   */
-  public emitUsersForMatch(matchName: string, players: Player[]): void {
-    this.io.to(matchName).emit("usersForMatch", { players });
-  }
-
   // Helpers
 
-  /**
-   * Get a reference to a socket connection by its id
-   *
-   * @param id    The id of the socket to search for
-   *
-   * @returns The socket if it exists, or undefined
-   */
-  public getSocketById(id: string): any | undefined {
-    return this.io.sockets.connected[id];
-  }
+  // *
+  //  * Get a reference to a socket connection by its id
+  //  *
+  //  * @param id    The id of the socket to search for
+  //  *
+  //  * @returns The socket if it exists, or undefined
+   
+  // public getSocketById(id: string): any | undefined {
+  //   return this.io.sockets.connected[id];
+  // }
 }
 
 /**

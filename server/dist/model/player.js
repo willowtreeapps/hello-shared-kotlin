@@ -1,22 +1,23 @@
-"use strict";
 /**
  * player.ts
  *
  * @file Spies player object
  * @author Brendan Lensink <brendan@steamclock.com>
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Player object
  */
-class Player {
-    constructor(socketId, deviceId, username, isHost) {
-        this.timeJoined = (new Date()).getTime();
-        this.disconnected = false;
-        this.socketId = socketId;
-        this.deviceId = deviceId;
-        this.username = username;
-        this.isHost = isHost;
-    }
-}
-exports.Player = Player;
+// export class Player {
+// 	socketId: string;
+// 	deviceId: string;
+// 	username: string;
+//   isHost: boolean;
+// 	timeJoined = (new Date()).getTime();
+// 	disconnected = false;
+//   constructor(socketId: string, deviceId: string, username: string, isHost: boolean) {
+//     this.socketId = socketId;
+//     this.deviceId = deviceId;
+//     this.username = username;
+//     this.isHost = isHost;
+//   }
+// } 
