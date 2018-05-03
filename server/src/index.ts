@@ -72,14 +72,14 @@ socketManager.io.on(IncomingEvents.connection, (s: any) => {
     log.verbose(IncomingEvents.join, username + " joined game" );
     socket.connect(username);
     if (matchManager.match !== undefined) {
-      log.verbose(IncomingEvents.join, "sending users out");
       var playernames = matchManager.match.players.map(obj => obj.name);
+      log.verbose(IncomingEvents.join, "sending users out: " + playernames);
       socket.sendUsers(playernames);
     }
   });
 
   socket.onLeaveGame((username: string) => {
-    log.verbose(IncomingEvents.leave, username + " leaving game" )
+    log.verbose(IncomingEvents.leave, socket.username + " leaving game" )
     socket.leave();
     if (matchManager.match === undefined) {
       return;

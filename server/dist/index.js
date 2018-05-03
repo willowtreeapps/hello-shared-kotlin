@@ -72,7 +72,7 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
         }
     });
     socket.onLeaveGame((username) => {
-        log_1.log.verbose(event_1.IncomingEvents.leave, username + " leaving game");
+        log_1.log.verbose(event_1.IncomingEvents.leave, socket.username + " leaving game");
         socket.leave();
         if (matchManager_1.matchManager.match === undefined) {
             return;
