@@ -59,6 +59,15 @@ export class Socket {
     this.socket.emit(OutGoingEvents.response, { message });
   }
 
+  /**
+   * Send a client error message back to the client
+   *
+   * @param message    The error message to pass on
+   */
+  public sendUsers(users: string[]): void {
+    this.socket.emit(OutGoingEvents.users, { users });
+  }
+
 /**
    * Send a client error message back to the client
    *

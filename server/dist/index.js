@@ -29,12 +29,20 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
     // SEND ACTION
     // ----------------------------------
     socket.onSendSelection((selection) => {
+        if (socket.username === undefined) {
+            socket.sendError("Must join game before setting selection");
+            return;
+        }
         log_1.log.verbose(event_1.IncomingEvents.selection, socket.username + " selected " + selection);
         matchManager_1.matchManager.match = new match_1.Match(selection);
         matchManager_1.matchManager.match.players.push(socket.username);
         socket.sendSelectionSet();
     });
     socket.onSendGuess((guess) => {
+        if (socket.username === undefined) {
+            socket.sendError("Must join game before guessing");
+            return;
+        }
         log_1.log.verbose(event_1.IncomingEvents.guess, socket.username + " guessed " + guess);
         socket.sendGuessSet(socket.username);
         if (matchManager_1.matchManager.match === undefined) {
@@ -52,8 +60,11 @@ socketManager_1.socketManager.io.on(event_1.IncomingEvents.connection, (s) => {
         }
     });
     socket.onJoinGame((username) => {
-        socket.connect(username);
         log_1.log.verbose(event_1.IncomingEvents.join, socket.username + " joined game");
+        socket.connect(username);
+        if (matchManager_1.matchManager.match !== undefined) {
+            socket.sendUsers(matchManager_1.matchManager.match.players);
+        }
     });
     // ----------------------------------
     // RECONNECT
