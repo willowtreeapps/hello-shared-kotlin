@@ -11,13 +11,13 @@
 		8519CAD01FFD9131001DB5AF /* KotlinHello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A9B1FEDA9CD00513796 /* KotlinHello.framework */; };
 		8519CAD2200FCC94001DB5AF /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */; };
 		8543766D203B36CF004CB092 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8543766C203B36CF004CB092 /* AppDatabase.swift */; };
-		8543766F203B423A004CB092 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8543766E203B423A004CB092 /* GoogleService-Info.plist */; };
 		85869A6C1FEAFE9C00513796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6B1FEAFE9C00513796 /* AppDelegate.swift */; };
 		85869A6E1FEAFE9C00513796 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85869A6D1FEAFE9C00513796 /* ViewController.swift */; };
 		85869A711FEAFE9C00513796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A6F1FEAFE9C00513796 /* Main.storyboard */; };
 		85869A731FEAFE9C00513796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85869A721FEAFE9C00513796 /* Assets.xcassets */; };
 		85869A761FEAFE9C00513796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85869A741FEAFE9C00513796 /* LaunchScreen.storyboard */; };
 		85869A9C1FEDA9CD00513796 /* KotlinHello.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85869A9B1FEDA9CD00513796 /* KotlinHello.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85E6D8D1209D5FE4007D424C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85E6D8D0209D5FE3007D424C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +39,6 @@
 		4B9F8C0E1116F423222DAE16 /* Pods_Hello_Shared_Kotlin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hello_Shared_Kotlin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		8543766C203B36CF004CB092 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		8543766E203B423A004CB092 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85869A681FEAFE9C00513796 /* Hello Shared Kotlin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello Shared Kotlin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85869A6B1FEAFE9C00513796 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85869A6D1FEAFE9C00513796 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		85869A751FEAFE9C00513796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85869A771FEAFE9C00513796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85869A9B1FEDA9CD00513796 /* KotlinHello.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KotlinHello.framework; sourceTree = "<group>"; };
+		85E6D8D0209D5FE3007D424C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3CE47D79E027FA79BF0ADBA /* Pods-Hello Shared Kotlin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hello Shared Kotlin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hello Shared Kotlin/Pods-Hello Shared Kotlin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,11 +103,10 @@
 		85869A6A1FEAFE9C00513796 /* Hello Shared Kotlin */ = {
 			isa = PBXGroup;
 			children = (
-				8543766E203B423A004CB092 /* GoogleService-Info.plist */,
+				85E6D8D0209D5FE3007D424C /* GoogleService-Info.plist */,
 				85869A6B1FEAFE9C00513796 /* AppDelegate.swift */,
 				85869A6D1FEAFE9C00513796 /* ViewController.swift */,
 				85869A6F1FEAFE9C00513796 /* Main.storyboard */,
-				8519CAD1200FCC94001DB5AF /* TodoTableViewCell.swift */,
 				85869A721FEAFE9C00513796 /* Assets.xcassets */,
 				85869A741FEAFE9C00513796 /* LaunchScreen.storyboard */,
 				85869A771FEAFE9C00513796 /* Info.plist */,
@@ -149,7 +148,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = WillowTree;
 				TargetAttributes = {
 					85869A671FEAFE9C00513796 = {
@@ -182,8 +181,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85E6D8D1209D5FE4007D424C /* GoogleService-Info.plist in Resources */,
 				85869A761FEAFE9C00513796 /* LaunchScreen.storyboard in Resources */,
-				8543766F203B423A004CB092 /* GoogleService-Info.plist in Resources */,
 				85869A731FEAFE9C00513796 /* Assets.xcassets in Resources */,
 				85869A711FEAFE9C00513796 /* Main.storyboard in Resources */,
 			);
@@ -310,6 +309,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -317,6 +317,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -367,6 +368,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -374,6 +376,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -408,9 +411,10 @@
 			baseConfigurationReference = 143878F7480F5A873D5D64C9 /* Pods-Hello Shared Kotlin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = marker;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9KXNU4Q45;
+				DEVELOPMENT_TEAM = YXHJ9J2A3H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -418,7 +422,7 @@
 				);
 				INFOPLIST_FILE = "Hello Shared Kotlin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.erik;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.hellokotlin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -431,9 +435,11 @@
 			baseConfigurationReference = A3CE47D79E027FA79BF0ADBA /* Pods-Hello Shared Kotlin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BITCODE_GENERATION_MODE = bitcode;
+				"BITCODE_GENERATION_MODE[arch=*]" = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9KXNU4Q45;
+				DEVELOPMENT_TEAM = YXHJ9J2A3H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,7 +447,7 @@
 				);
 				INFOPLIST_FILE = "Hello Shared Kotlin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.erik;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.hellokotlin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
