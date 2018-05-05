@@ -8,13 +8,13 @@ import com.google.firebase.database.ValueEventListener
 import com.willowtreeapps.hellokotlin.AppState
 import com.willowtreeapps.hellokotlin.Database
 
-class AppDatabase : Database {
+class FirebaseDatabase : Database {
     private val ref = FirebaseDatabase.getInstance().reference
 
     override fun put(state: AppState) {
         ref.setValue(state).addOnCompleteListener {
             if (!it.isSuccessful) {
-                Log.e("AppDatabase", it.exception?.message, it.exception)
+                Log.e("FirebaseDatabase", it.exception?.message, it.exception)
             }
         }
     }
@@ -27,7 +27,7 @@ class AppDatabase : Database {
             }
 
             override fun onCancelled(e: DatabaseError) {
-                Log.e("AppDatabase", e.message, e.toException())
+                Log.e("FirebaseDatabase", e.message, e.toException())
             }
         })
     }

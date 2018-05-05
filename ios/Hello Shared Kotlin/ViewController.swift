@@ -23,7 +23,8 @@ class ViewController: UIViewController, KotlinHelloSimpleStoreListener {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        appStore = KotlinHelloAppStore(db: AppDatabase())
+        let db: KotlinHelloDatabase = firebaseEnabled ? FirebaseDatabase() :  LocalDatabase()
+        appStore = KotlinHelloAppStore(db: db)
         dataSource = TodosDataSource(store: appStore)
         todos.dataSource = dataSource
         todos.delegate = dataSource

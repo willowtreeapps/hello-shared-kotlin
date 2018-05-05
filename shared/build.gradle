@@ -32,7 +32,16 @@ task lipo(type: Exec, dependsOn: 'build') {
     args += ['-create', '-output', output]
 }
 
-task copyFramework(type: Copy, dependsOn: lipo) {
+task genConstants() {
+    def output = file("${rootProject.rootDir}/ios/Hello Shared Kotlin/Constants.swift")
+    inputs.property("firebase_enabled", firebase_enabled)
+    outputs.file output
+    doLast {
+        output.write("let firebaseEnabled = $firebase_enabled")
+    }
+}
+
+task copyFramework(type: Copy, dependsOn: [lipo, genConstants]) {
     from("$buildDir/konan/bin/iphone") {
         include '*/Headers/*'
         include '*/Modules/*'
@@ -41,3 +50,4 @@ task copyFramework(type: Copy, dependsOn: lipo) {
     from "$buildDir/konan/bin/iphone_universal"
     into "${rootProject.rootDir}/ios"
 }
+
