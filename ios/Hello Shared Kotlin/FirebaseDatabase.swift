@@ -2,7 +2,7 @@ import Foundation
 import KotlinHello
 import Firebase
 
-class AppDatabase : NSObject, KotlinHelloDatabase {
+class FirebaseDatabase : NSObject, KotlinHelloDatabase {
     
     let ref = Database.database().reference()
     

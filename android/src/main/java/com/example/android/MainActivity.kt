@@ -14,7 +14,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import com.willowtreeapps.hellokotlin.*
 
-val appStore = AppStore(AppDatabase())
+val appStore = AppStore(if (BuildConfig.FIREBASE_ENABLED) FirebaseDatabase() else LocalDatabase())
 
 class MainActivity : AppCompatActivity(), SimpleStore.Listener<AppState> {
 

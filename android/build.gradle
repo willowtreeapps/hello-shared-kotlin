@@ -18,6 +18,7 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "boolean", "FIREBASE_ENABLED", firebase_enabled.toString()
     }
 
     buildTypes {
@@ -48,4 +49,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-apply plugin: 'com.google.gms.google-services'
+if (firebase_enabled) {
+    apply plugin: 'com.google.gms.google-services'
+}
