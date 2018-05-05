@@ -16,7 +16,13 @@ konan.targets = ['iphone', 'iphone_sim']
 def frameworkName = 'KotlinHello'
 
 konanArtifacts {
-    framework(frameworkName)
+    framework(frameworkName) {
+        if (System.getenv("CONFIGURATION") == "Release") {
+            extraOpts '--embed_bitcode'
+        } else {
+            extraOpts '--embed_bitcode_marker'
+        }
+    }
 }
 
 task lipo(type: Exec, dependsOn: 'build') {
