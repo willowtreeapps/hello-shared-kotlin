@@ -24,7 +24,7 @@ task lipo(type: Exec, dependsOn: 'build') {
             "$buildDir/konan/bin/ios_arm64/${frameworkName}.framework/$frameworkName",
             "$buildDir/konan/bin/ios_x64/${frameworkName}.framework/$frameworkName"
     )
-    def output = file("$buildDir/konan/bin/iphone_universal/${frameworkName}.framework/$frameworkName")
+    def output = file("$buildDir/konan/bin/ios_universal/${frameworkName}.framework/$frameworkName")
     inputs.files frameworks
     outputs.file output
     executable = 'lipo'
@@ -42,12 +42,12 @@ task genConstants() {
 }
 
 task copyFramework(type: Copy, dependsOn: [lipo, genConstants]) {
-    from("$buildDir/konan/bin/iphone") {
+    from("$buildDir/konan/bin/ios_arm64") {
         include '*/Headers/*'
         include '*/Modules/*'
         include '*/Info.plist'
     }
-    from "$buildDir/konan/bin/iphone_universal"
+    from "$buildDir/konan/bin/ios_universal"
     into "${rootProject.rootDir}/ios"
 }
 
